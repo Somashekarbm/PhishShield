@@ -1,0 +1,4 @@
+#to run predict.py-
+pip uninstall numpy scikit-learn
+pip install numpy==1.24.0
+pip install scikit-learn==1.3.0
