@@ -2,7 +2,7 @@
 
 ## Packages for RESTful web app
 ```
-pip install Flask Flask-SQLAlchemy Flask-HTTPAuth Flask-JWT-Extended
+pip install Flask Flask-SQLAlchemy Flask-HTTPAuth Flask-JWT-Extended Flask-Cors
 ```
 
 ## Register a New User
@@ -38,3 +38,14 @@ Invoke-RestMethod -Uri http://127.0.0.1:5000/api/admin/user/$userId -Method Dele
 ```
 Invoke-RestMethod -Uri http://127.0.0.1:5000/api/user/data-deletion -Method Post -Headers @{ "Authorization" = "Bearer $authToken" }
 ```
+
+## Get Predictions
+Example request to classify a URL with model_id 0:
+$body = @{
+    url = "http://example.com"
+    model_id = "0"
+} | ConvertTo-Json
+
+$response = Invoke-RestMethod -Uri "http://127.0.0.1:5000/api/classify" -Method POST -Body $body -ContentType "application/json"
+$response
+

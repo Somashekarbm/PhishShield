@@ -13,6 +13,15 @@ db.init_app(app)
 auth = HTTPTokenAuth(scheme='Bearer')
 jwt = JWTManager(app)
 
+# Dummy predictions (replace with actual ML model predictions later)
+dummy_predictions = {
+    "0": {"class": "benign", "probabilities": {"benign": 0.8, "phishing": 0.1, "malicious": 0.05, "defacement": 0.05}},
+    "1": {"class": "phishing", "probabilities": {"benign": 0.1, "phishing": 0.7, "malicious": 0.1, "defacement": 0.1}},
+    "2": {"class": "malicious", "probabilities": {"benign": 0.05, "phishing": 0.2, "malicious": 0.6, "defacement": 0.15}},
+    "3": {"class": "defacement", "probabilities": {"benign": 0.1, "phishing": 0.1, "malicious": 0.2, "defacement": 0.6}}
+}
+
+
 def create_tables():
     with app.app_context():
         db.create_all()
@@ -86,6 +95,24 @@ def request_data_deletion():
     db.session.commit()
 
     return jsonify({"status": "success", "message": "Data deletion requested"}), 200
+
+@app.route('/api/classify', methods=['POST'])
+def classify_url():
+    data = request.get_json()
+    url = data.get('url')
+    model_id = data.get('model_id')
+
+    # Validate input (ensure URL and model_id are present)
+    if not url or model_id not in dummy_predictions:
+        return jsonify({"error": "Invalid request data"}), 400
+
+    # Dummy prediction (replace with actual ML model prediction logic)
+    prediction = dummy_predictions[model_id]
+
+    return jsonify({
+        "class": prediction["class"],
+        "probabilities": prediction["probabilities"]
+    }), 200
 
 if __name__ == '__main__':
     create_tables()
