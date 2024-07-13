@@ -1,5 +1,10 @@
 # PhishShield
 
+## Packages for RESTful web app
+```
+pip install Flask Flask-SQLAlchemy Flask-HTTPAuth Flask-JWT-Extended
+```
+
 ## Register a New User
 ```
 Invoke-RestMethod -Uri http://127.0.0.1:5000/api/register -Method Post -Headers @{ "Content-Type" = "application/json" } -Body '{"username": "testuser", "email": "testuser@example.com", "password": "password123"}'
