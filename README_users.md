@@ -1,5 +1,9 @@
 # PhishShield
 
+# packages to be installed-
+pip install joblib
+pip install huggingface-hub
+
 ## Packages for RESTful web app
 ```
 pip install Flask Flask-SQLAlchemy Flask-HTTPAuth Flask-JWT-Extended Flask-Cors
