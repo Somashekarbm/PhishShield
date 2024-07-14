@@ -64,7 +64,7 @@ async function classify() {
     const classResult = data.class;
     const probabilities = data.probabilities;
 
-    let formattedOutput = `Class: ${classResult}\n\n`;
+    let formattedOutput = `The URL is a ${classResult} URL\n\n`;
     formattedOutput += "Probabilities:\n";
     for (const [key, value] of Object.entries(probabilities)) {
         formattedOutput += `${key}: ${value.toFixed(4)}\n`;
