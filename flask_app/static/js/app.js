@@ -53,8 +53,27 @@ async function classify() {
     });
 
     const data = await response.json();
-    document.getElementById('classify-message').innerText = JSON.stringify(data);
+
+    // Check if there is an error in the response
+    if (data.error) {
+        document.getElementById('classify-message').innerText = `Error: ${data.error}`;
+        return;
+    }
+
+    // Format the classification results for display
+    const classResult = data.class;
+    const probabilities = data.probabilities;
+
+    let formattedOutput = `Class: ${classResult}\n\n`;
+    formattedOutput += "Probabilities:\n";
+    for (const [key, value] of Object.entries(probabilities)) {
+        formattedOutput += `${key}: ${value.toFixed(4)}\n`;
+    }
+
+    // Display the formatted output
+    document.getElementById('classify-message').innerText = formattedOutput;
 }
+
 
 async function logout() {
     const token = localStorage.getItem('token');
