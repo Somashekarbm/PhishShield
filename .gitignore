@@ -1,2 +1,5 @@
 .venv/
 venv/
+trained_models/
+local_model_repo/
+**/__pycache__/
