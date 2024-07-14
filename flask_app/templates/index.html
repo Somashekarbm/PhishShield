@@ -7,47 +7,87 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <h1>Flask Web App Frontend</h1>
+    <section>
+        <div class="signin">
+            <div class="content">
+                <h1>Flask Web App Frontend</h1>
 
-    <div id="register">
-        <h2>Register</h2>
-        <input type="text" id="register-username" placeholder="Username">
-        <input type="email" id="register-email" placeholder="Email">
-        <input type="password" id="register-password" placeholder="Password">
-        <button onclick="register()">Register</button>
-        <p id="register-message"></p>
-    </div>
+                <div id="register">
+                    <h2>Register</h2>
+                    <div class="form">
+                        <div class="inputBox">
+                            <input type="text" id="register-username" placeholder="Username" required>
+                            <i>Username</i>
+                        </div>
+                        <div class="inputBox">
+                            <input type="email" id="register-email" placeholder="Email" required>
+                            <i>Email</i>
+                        </div>
+                        <div class="inputBox">
+                            <input type="password" id="register-password" placeholder="Password" required>
+                            <i>Password</i>
+                        </div>
+                        <input type="submit" value="Register" onclick="register()">
+                    </div>
+                    <p id="register-message"></p>
+                </div>
 
-    <div id="login">
-        <h2>Login</h2>
-        <input type="text" id="login-username" placeholder="Username">
-        <input type="password" id="login-password" placeholder="Password">
-        <button onclick="login()">Login</button>
-        <p id="login-message"></p>
-    </div>
+                <div id="login">
+                    <h2>Login</h2>
+                    <div class="form">
+                        <div class="inputBox">
+                            <input type="text" id="login-username" placeholder="Username" required>
+                            <i>Username</i>
+                        </div>
+                        <div class="inputBox">
+                            <input type="password" id="login-password" placeholder="Password" required>
+                            <i>Password</i>
+                        </div>
+                        <input type="submit" value="Login" onclick="login()">
+                    </div>
+                    <p id="login-message"></p>
+                </div>
 
-    <div id="classify" style="display: none;">
-        <h2>Classify URL</h2>
-        <input type="text" id="url" placeholder="URL">
-        <input type="text" id="model-id" placeholder="Model ID">
-        <button onclick="classify()">Classify</button>
-        <p id="classify-message"></p>
-    </div>
+                <div id="classify" style="display: none;">
+                    <h2>Classify URL</h2>
+                    <div class="form">
+                        <div class="inputBox">
+                            <input type="text" id="url" placeholder="URL" required>
+                            <i>URL</i>
+                        </div>
+                        <div class="inputBox">
+                            <input type="text" id="model-id" placeholder="Model ID" required>
+                            <i>Model ID</i>
+                        </div>
+                        <input type="submit" value="Classify" onclick="classify()">
+                    </div>
+                    <p id="classify-message"></p>
+                </div>
 
-    <div id="admin" style="display: none;">
-        <h2>Admin Panel</h2>
-        <button onclick="listUsers()">List All Users</button>
-        <div id="users-list"></div>
-        <input type="number" id="delete-user-id" placeholder="User ID to delete">
-        <button onclick="deleteUser()">Delete User</button>
-        <p id="admin-message"></p>
-    </div>
+                <div id="admin" style="display: none;">
+                    <h2>Admin Panel</h2>
+                    <div class="form">
+                        <input type="submit" value="List All Users" onclick="listUsers()">
+                        <div id="users-list"></div>
+                        <div class="inputBox">
+                            <input type="number" id="delete-user-id" placeholder="User ID to delete" required>
+                            <i>User ID</i>
+                        </div>
+                        <input type="submit" value="Delete User" onclick="deleteUser()">
+                    </div>
+                    <p id="admin-message"></p>
+                </div>
 
-    <div id="user-actions" style="display: none;">
-        <button onclick="logout()">Logout</button>
-        <button onclick="requestDataDeletion()">Request Data Deletion</button>
-        <p id="user-message"></p>
-    </div>
+                <div id="user-actions" style="display: none;">
+                    <div class="form">
+                        <input type="submit" value="Logout" onclick="logout()">
+                        <input type="submit" value="Request Data Deletion" onclick="requestDataDeletion()">
+                    </div>
+                    <p id="user-message"></p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
