@@ -13,59 +13,10 @@ body {
     align-items: center;
     min-height: 100vh;
     background: #000;
-    overflow: hidden;
+    overflow: auto;
 }
 
-section {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2px;
-    flex-wrap: wrap;
-}
-
-section::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(#000, #0f0, #000);
-    animation: animate 5s linear infinite;
-    opacity: 0.5;
-    filter: blur(10px);
-}
-
-@keyframes animate {
-    0% {
-        transform: translateY(-100%);
-    }
-
-    100% {
-        transform: translateY(100%);
-    }
-}
-
-section span {
-    position: relative;
-    display: block;
-    width: calc(6.25vw - 2px);
-    height: calc(6.25vw - 2px);
-    background: #181818;
-    z-index: 2;
-    transition: 1.5s;
-}
-
-section span:hover {
-    background: #0f0;
-    box-shadow: 0 0 20px #0f0, 0 0 40px #0f0, 0 0 60px #0f0;
-    transition: 0s;
-}
-
-section .signin {
-    position: absolute;
+.signin {
     width: 400px;
     background: rgba(34, 34, 34, 0.8);
     z-index: 1000;
@@ -78,8 +29,7 @@ section .signin {
     backdrop-filter: blur(10px);
 }
 
-section .signin .content {
-    position: relative;
+.signin .content {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -88,7 +38,7 @@ section .signin .content {
     gap: 40px;
 }
 
-section .signin .content h1 {
+.signin .content h1 {
     font-size: 2.5em;
     color: #0f0;
     text-transform: uppercase;
@@ -108,25 +58,25 @@ section .signin .content h1 {
     }
 }
 
-section .signin .content h2 {
+.signin .content h2 {
     font-size: 2em;
     color: #0f0;
     text-transform: uppercase;
 }
 
-section .signin .content .form {
+.signin .content .form {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
 
-section .signin .content .form .inputBox {
+.signin .content .form .inputBox {
     position: relative;
     width: 100%;
 }
 
-section .signin .content .form .inputBox input {
+.signin .content .form .inputBox input {
     position: relative;
     width: 100%;
     background: #333;
@@ -139,7 +89,7 @@ section .signin .content .form .inputBox input {
     font-size: 1em;
 }
 
-section .signin .content .form .inputBox i {
+.signin .content .form .inputBox i {
     position: absolute;
     left: 0;
     padding: 15px 10px;
@@ -157,7 +107,6 @@ section .signin .content .form .inputBox i {
 }
 
 .signin .content .form .links {
-    position: relative;
     width: 100%;
     display: flex;
     justify-content: space-between;
