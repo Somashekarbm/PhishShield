@@ -55,3 +55,8 @@ $body = @{
 $response = Invoke-RestMethod -Uri "http://127.0.0.1:5000/api/classify" -Method POST -Body $body -ContentType "application/json"
 $response
 
+## Sample URLs
+mp3raid.com/music/krizz_kaliko.html
+bopsecrets.org/rexroth/cr/1.htm	
+br-icloud.com.br
+recipelink.com/msgbrd/board_14/2007/DEC/29094.html
