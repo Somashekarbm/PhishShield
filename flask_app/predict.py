@@ -64,9 +64,9 @@ def load_model_and_predict(url, model_id):
 
     return output
 
+# Example usage:
 if __name__ == "__main__":
-    # Example usage:
-    url = "http://example.com/somepath?query=1"
+    url = "vip-computer.com"
     model_id = "2"  # Should be a string matching one of the keys in model_names
-    prediction = load_model_and_predict(url, model_id)
-    print("Prediction:", prediction)
+    result = load_model_and_predict(url, model_id)
+    print("Prediction:", result)

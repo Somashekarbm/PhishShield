@@ -6,7 +6,9 @@ pip install huggingface-hub
 
 ## Packages for RESTful web app
 ```
-pip install Flask Flask-SQLAlchemy Flask-HTTPAuth Flask-JWT-Extended Flask-Cors
+pip install Flask Flask-SQLAlchemy Flask-HTTPAuth Flask-JWT-Extended joblib pandas huggingface-hub tldextract scikit-learn
+set PYTHONPATH=%cd%
+python flask_app/app.py
 ```
 
 ## Register a New User

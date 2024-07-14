@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_httpauth import HTTPTokenAuth
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 
+from predict import load_model_and_predict, model_names
+
 from config import Config
 from models import db, User
 
@@ -12,15 +14,6 @@ app.config.from_object(Config)
 db.init_app(app)
 auth = HTTPTokenAuth(scheme='Bearer')
 jwt = JWTManager(app)
-
-# Dummy predictions (replace with actual ML model predictions later)
-dummy_predictions = {
-    "0": {"class": "benign", "probabilities": {"benign": 0.8, "phishing": 0.1, "malicious": 0.05, "defacement": 0.05}},
-    "1": {"class": "phishing", "probabilities": {"benign": 0.1, "phishing": 0.7, "malicious": 0.1, "defacement": 0.1}},
-    "2": {"class": "malicious", "probabilities": {"benign": 0.05, "phishing": 0.2, "malicious": 0.6, "defacement": 0.15}},
-    "3": {"class": "defacement", "probabilities": {"benign": 0.1, "phishing": 0.1, "malicious": 0.2, "defacement": 0.6}}
-}
-
 
 def create_tables():
     with app.app_context():
@@ -103,11 +96,11 @@ def classify_url():
     model_id = data.get('model_id')
 
     # Validate input (ensure URL and model_id are present)
-    if not url or model_id not in dummy_predictions:
+    if not url or model_id not in model_names.keys():
         return jsonify({"error": "Invalid request data"}), 400
 
     # Dummy prediction (replace with actual ML model prediction logic)
-    prediction = dummy_predictions[model_id]
+    prediction = load_model_and_predict(url, model_id)
 
     return jsonify({
         "class": prediction["class"],
