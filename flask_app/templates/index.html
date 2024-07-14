@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phish Shield</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        #available-models {
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
     <section>
@@ -50,6 +55,7 @@
 
                 <div id="classify" style="display: none;">
                     <h2>Classify URL</h2>
+                    <p style="color: #fff">Available Models: <br><span id="available-models"></span></p>
                     <div class="form">
                         <div class="inputBox">
                             <input type="text" id="url" placeholder="URL" required>
@@ -90,5 +96,31 @@
     </section>
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script>
+        // Dictionary mapping model IDs to their respective file names and accuracies
+        var model_details = {
+            "0": { name: "AdaBoost classifier", accuracy: "81.525%" },
+            "1": { name: "ExtraTrees Classifier", accuracy: "91.419%" },
+            "2": { name: "Random Forest Classifier", accuracy: "91.440%" },
+            "3": { name: "SGD Classifier", accuracy: "82.035%" }
+        };
+
+        // Function to get model details based on model ID
+        function getModelDetails(modelId) {
+            var model = model_details[modelId];
+            if (model) {
+                return `${modelId}  ${model.name}  ${model.accuracy}`;
+            } else {
+                return "Unknown Model";
+            }
+        }
+
+        // Example of setting available models dynamically
+        var availableModelsSpan = document.getElementById('available-models');
+        var modelsList = Object.keys(model_details).map(function(key) {
+            return getModelDetails(key);
+        }).join("<br>");
+        availableModelsSpan.innerHTML = modelsList;
+    </script>
 </body>
 </html>
